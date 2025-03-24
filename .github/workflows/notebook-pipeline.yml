@@ -26,10 +26,7 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
         pip install jupyter nbconvert 
-
+          
     - name: Run Jupyter Notebook
       run: |
-        jupyter nbconvert --execute --to notebook --inplace C:/Users/Megy/Desktop/Projects/notebook-/my_notebook.ipynb
-
-
-       
+        jupyter nbconvert --execute --to notebook --inplace "C:/Users/Megy/Desktop/Projects/notebook-/my_notebook.ipynb"
