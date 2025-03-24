@@ -29,6 +29,7 @@ jobs:
 
     - name: Run Jupyter Notebook
       run: |
-        jupyter nbconvert --execute --to notebook --inplace C:\Users\Megy\Desktop\Projects\notebook-  # add your path
+        jupyter nbconvert --execute --to notebook --inplace C:/Users/Megy/Desktop/Projects/notebook-/my_notebook.ipynb
+
 
        
