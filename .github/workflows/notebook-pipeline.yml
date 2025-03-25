@@ -31,10 +31,6 @@ jobs:
         pip install -r requirements.txt
         pip install jupyter nbconvert 
           
-    - name: Run Jupyter Notebook
-      run: |
-        jupyter nbconvert --execute --to notebook --inplace my_notebook.ipynb
-
 #  Authenticate with Google Cloud using OIDC
     - name: Authenticate with GCP using OIDC
       id: 'auth'
