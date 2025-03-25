@@ -4,8 +4,8 @@ provider "google" {
   zone    = "europe-west2-b"   
 }
 
-resource "google_compute_instance" "instance_vm" {
-  name         = "instance_vm"
+resource "google_compute_instance" "notebook" {
+  name         = "notebook"
   machine_type = "e2-medium"
   zone         = "europe-west2-b"   
 
