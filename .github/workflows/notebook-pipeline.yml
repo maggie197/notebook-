@@ -8,6 +8,10 @@ on:
     branches:
       - main
 
+permissions:
+  contents: 'read'
+  id-token: 'write'  # Required for OIDC Authentication
+
 jobs:
   notebook:
     runs-on: ubuntu-latest
@@ -30,3 +34,28 @@ jobs:
     - name: Run Jupyter Notebook
       run: |
         jupyter nbconvert --execute --to notebook --inplace my_notebook.ipynb
+
+#  Authenticate with Google Cloud using OIDC
+    - name: Authenticate with GCP using OIDC
+      id: 'auth'
+      uses: 'google-github-actions/auth@v1'
+      with:
+        workload_identity_provider: 'projects/227644934353/locations/global/workloadIdentityPools/github-action-pool/providers/github'
+        service_account: 'github-action-sa@jupyter-notebook-454717.iam.gserviceaccount.com'
+
+    - name: Set up gcloud CLI
+      uses: google-github-actions/setup-gcloud@v1
+      with:
+        project_id: jupyter-notebook-454717
+
+    - name: Run Jupyter Notebook
+      run: |
+        jupyter nbconvert --execute --to notebook --inplace my_notebook.ipynb
+
+    # Optional: Run GCloud Commands After Notebook Execution
+    - name: Verify GCP Authentication
+      run: |
+        gcloud auth list
+        gcloud projects list
+
+
